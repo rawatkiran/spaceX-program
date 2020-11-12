@@ -111,6 +111,11 @@ class App extends React.Component {
                   })}
         </div>
       </div>
+      <div>
+         <h5 className="App-Developers-name">
+            Developed by : Kiran Rawat 
+         </h5>
+      </div>
     </div>
   );
  }
