@@ -1,15 +1,21 @@
 {
-  "short_name": "SpaceX App",
-  "name": "SpaceX Launch Program",
+  "short_name": "spacexapp",
+  "name": "launchprogram",
   "icons": [
     {
       "src": "logo512.png",
       "sizes": "512x512",
-      "type": "image/x-icon",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+     {
+      "src": "logo192.png",
+      "sizes": "144x144",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ],
-  "start_url": "https://launch-spacex-program.herokuapp.com/",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
