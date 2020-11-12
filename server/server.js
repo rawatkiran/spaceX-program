@@ -10,9 +10,7 @@ import App from '../src/App';
 const PORT = 5000;
 
 const app = express();
-app.get("/service-worker.js", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "public", "service-worker.js"));
-});
+
 app.use('^/$', (req, res, next)=> {
     const myApp = ReactDomServer.renderToString(<App />);
     fs.readFile(path.resolve('./build/index.html'), 'utf-8', (err, data) => { 
