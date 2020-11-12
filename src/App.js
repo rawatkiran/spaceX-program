@@ -56,7 +56,7 @@ class App extends React.Component {
     <div className="App" >
       <h2 className="App-header">SpaceX Launch Programs</h2>
       <div style={{display:"flex",flexDirection:'row',width:window.innerWidth}}>
-        <div style={{height:550,backgroundColor:"white",marginLeft:15,padding:10}}>
+        <div style={{height:"max-content",backgroundColor:"white",marginLeft:15,padding:10}}>
           <div style={{fontWeight:"bold"}}>Filters</div>
           <div style={{textAlign:'center'}}>
             Launch Year

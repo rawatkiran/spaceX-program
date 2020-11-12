@@ -19,6 +19,8 @@ function LaunchDetails({ details }) {
         <div>
           <img
             src={imgSrc}
+            width={300}
+            height={210}
             alt="img not available on api"
             className="Launch-mission-image"
           />
