@@ -51,7 +51,13 @@ class App extends React.Component {
   render(){
     const { isLoaded, data } = this.state;
     const uniqueLaunchYears = new Array(16).fill(0).map((_, index) => 2006 + index);
-  if(isLoaded){
+  if(!isLoaded){
+     return <div className="App-loader-container">
+        <div className="App-loader-box">
+          <img src={loader} alt="loading..." />
+        </div>
+      </div>
+  }
   return (
     <div className="App" >
       <h2 className="App-header">SpaceX Launch Programs</h2>
@@ -107,15 +113,7 @@ class App extends React.Component {
       </div>
     </div>
   );
-    }
-    else{
-      return <div className="App-loader-container">
-        <div className="App-loader-box">
-          <img src={loader} alt="loading..." />
-        </div>
-      </div>
-    }
-  }
+ }
 }
 
 export default App;
