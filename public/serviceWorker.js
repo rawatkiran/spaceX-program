@@ -1,23 +1,42 @@
-var SLOW_TIME = 3000;
-console.log('I am a Service Worker!');
-this.addEventListener( 'install', function () {
-  console.log('Installed service worker');
+
+const staticCacheName="site-static";
+const dynamicCache= "site-dynamic";
+const assets=[
+  '/',
+  '/index.html',
+  '/src/App.js',
+  '/src/index.js'
+];
+
+this.addEventListener( 'install', evt => {
+  evt.waitUntil(
+    caches.open(staticCacheName).then((cache=>{
+    cache.addAll(assets)
+  }))
+  )
+} );
+
+//activate service worker
+this.addEventListener( 'activate', function (event) {
+  event.waitUntil(
+    caches.keys().then((keys=>{
+      return Promise.all(keys
+      .filter(key=>key !== staticCacheName)
+      .map(key=> caches.delete(key))
+      )
+    }))
+  )
 } );
 
 this.addEventListener( 'fetch', function(event) {
-  var url = event.request.url;
-
-  if ( url.indexOf( 'blocking' ) === -1) {
-  return;
-  }
-
-  var promise = Promise.race( [
-    new Promise( ( resolve, reject) => setTimeout(
-      () => reject( new Response( 'Request killed!' ) ),
-      SLOW_TIME
-    ) ),
-    fetch( event.request ),
-  ] );
-
-  event.respondWith( promise );
-} );
+  event.respondWith(
+    caches.match(event.request).then((cacheRes =>{
+      return cacheRes || fetch(event.request).then((fetchRes=>{
+        return caches.open(dynamicCache).then(cache=>{
+          cache.put(event.request.url,fetchRes.clone());
+          return fetchRes;
+        })
+      }));
+    }))
+  )
+  })
