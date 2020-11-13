@@ -4,7 +4,7 @@ import querystring from 'querystring';
 import LaunchDetails from "./components/LaunchDetails"
 import loader from './loader.gif';
 
-const API_BASE_URL = "https://api.spaceXdata.com/v3/launches?limit=100";
+const API_BASE_URL = "v3/launches?limit=100";
 class App extends React.Component {
   constructor(props) {
     super(props);
