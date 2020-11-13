@@ -2,7 +2,7 @@
   "name": "spacex-program",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://api.spaceXdata.com/",
+  "proxy": "https://launch-spacex-program.herokuapp.com",
   "dependencies": {
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
